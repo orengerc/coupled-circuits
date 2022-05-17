@@ -11,7 +11,14 @@ import matplotlib.pyplot as plt
 
 
 def get_max_amplitude(path):
-    print(path)
+    df = pd.read_csv(path)
+    return np.amax(df.iloc[:, 4].to_numpy())
+
+
+def graph_amplitudes_vs_frequencies(x, y):
+    g = Graph(x, y)
+    g.set_labels("Maximum Amplitude vs. Frequency", "Frequency [KHz]", "Max Amplitude [???]")
+    g.simple_plot()
 
 
 def analyze_week1():
@@ -24,6 +31,7 @@ def analyze_week1():
     for filename in os.listdir(directory):
         freq.append(float((os.path.splitext(filename)[0])[:-4]))
         amp.append(get_max_amplitude(os.path.join(directory, filename)))
+    graph_amplitudes_vs_frequencies(freq, amp)
 
 
 if __name__ == '__main__':
