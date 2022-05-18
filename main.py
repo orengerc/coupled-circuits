@@ -17,8 +17,9 @@ def get_max_amplitude(path):
 
 def graph_amplitudes_vs_frequencies(x, y):
     g = Graph(x, y)
-    g.set_labels("Maximum Amplitude vs. Frequency", "Frequency [KHz]", "Max Amplitude [???]")
-    g.simple_plot()
+    g.set_labels("Maximum Amplitude vs. Frequency", "Frequency [KHz]", "Max Amplitude [V]")
+    g.set_errors(np.array(x) / 500, np.array(y) / 100)
+    g.plot_with_fit_and_errors(Equations.amplitude_vs_frequency)
 
 
 def analyze_week1():
