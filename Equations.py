@@ -3,7 +3,7 @@ Holds equations used for fitting
 """
 
 import numpy as np
-import cmath
+from cmath import *
 
 
 def linear_no_intercept(x, a):
@@ -44,3 +44,11 @@ def one_slit(x, a, b, c):
 
 def two_slits(x, a, b, c, d, e):
     return a * np.square(np.sinc(b * x + c)) * np.square(np.cos(d * x + e))
+
+
+def amplitude_vs_frequency(x, f_0, w_0, b):
+    return np.sqrt((f_0 ** 2) / (np.square(w_0 ** 2 - np.square(x)) + 2 * b * x))
+
+
+# def amplitude_vs_frequency(x, w_0, alpha):
+#     return w_0 ** 2 / np.sqrt(np.square(w_0 ** 2 - np.square(x)) + 4 * (alpha ** 2) * np.square(x))
